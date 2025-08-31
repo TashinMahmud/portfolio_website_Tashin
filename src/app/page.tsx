@@ -99,8 +99,8 @@ export default function Home() {
       title: "Portfolio Website",
       description: "A modern, responsive portfolio website built with Next.js and TailwindCSS. Features dark mode, smooth animations, and professional design.",
       tech: ["Next.js", "React", "TailwindCSS", "TypeScript"],
-      github: "#",
-      demo: "#",
+      github: "https://github.com/TashinMahmud/portfolio_website_Tashin",
+      demo: "https://tashin-mahmud.vercel.app",
       type: "Web Development"
     }
   ];
@@ -118,135 +118,67 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark' : ''} bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-blue-900/20`}>
-      {/* Tech-Inspired Background */}
+      {/* Tech-Inspired Background - Performance Optimized */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Tech Icons and Images */}
+        {/* Reduced Tech Icons for Better Performance */}
         <motion.div
           className="absolute top-20 left-20 text-blue-400/20 dark:text-blue-600/20"
           animate={{
             rotate: [0, 360],
-            scale: [1, 1.1, 1],
-            opacity: [0.2, 0.4, 0.2]
+            opacity: [0.2, 0.3, 0.2]
           }}
           transition={{
-            duration: 20,
+            duration: 40,
             repeat: Infinity,
             ease: "linear"
           }}
         >
-          <Code size={80} />
+          <Code size={50} />
         </motion.div>
         
         <motion.div
           className="absolute top-40 right-32 text-purple-400/20 dark:text-purple-600/20"
           animate={{
             rotate: [360, 0],
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.5, 0.2]
+            opacity: [0.2, 0.3, 0.2]
           }}
           transition={{
-            duration: 25,
+            duration: 50,
             repeat: Infinity,
             ease: "linear"
           }}
         >
-          <Database size={60} />
+          <Database size={40} />
         </motion.div>
         
         <motion.div
           className="absolute bottom-32 left-1/4 text-cyan-400/20 dark:text-cyan-600/20"
           animate={{
             rotate: [0, -360],
-            scale: [1, 0.8, 1],
-            opacity: [0.2, 0.4, 0.2]
+            opacity: [0.2, 0.3, 0.2]
           }}
           transition={{
-            duration: 18,
+            duration: 60,
             repeat: Infinity,
             ease: "linear"
           }}
         >
-          <Globe size={70} />
+          <Globe size={50} />
         </motion.div>
         
         <motion.div
           className="absolute top-1/2 right-1/4 text-indigo-400/20 dark:text-indigo-600/20"
           animate={{
             rotate: [360, 0],
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.6, 0.2]
+            opacity: [0.2, 0.3, 0.2]
           }}
           transition={{
-            duration: 22,
+            duration: 70,
             repeat: Infinity,
             ease: "linear"
           }}
         >
-          <Brain size={50} />
-        </motion.div>
-        
-        <motion.div
-          className="absolute bottom-1/3 right-1/3 text-green-400/20 dark:text-green-600/20"
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.1, 1],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{
-            duration: 16,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          <Github size={40} />
-        </motion.div>
-        
-        <motion.div
-          className="absolute top-1/3 left-1/3 text-pink-400/20 dark:text-pink-600/20"
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.5, 0.2]
-          }}
-          transition={{
-            duration: 19,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          <Zap size={55} />
-        </motion.div>
-        
-        <motion.div
-          className="absolute top-2/3 left-1/2 text-orange-400/20 dark:text-orange-600/20"
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{
-            duration: 24,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          <Smartphone size={45} />
-        </motion.div>
-        
-        <motion.div
-          className="absolute top-1/2 right-1/3 text-teal-400/20 dark:text-teal-600/20"
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 0.9, 1],
-            opacity: [0.2, 0.5, 0.2]
-          }}
-          transition={{
-            duration: 21,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          <Mail size={35} />
+          <Brain size={35} />
         </motion.div>
         
         {/* Additional Tech Icons */}
@@ -266,100 +198,35 @@ export default function Home() {
           <Download size={30} />
         </motion.div>
         
+        {/* Additional Tech Icons - Optimized */}
         <motion.div
           className="absolute top-1/3 right-1/6 text-red-400/20 dark:text-red-600/20"
           animate={{
             rotate: [360, 0],
-            scale: [1, 1.1, 1],
-            opacity: [0.2, 0.4, 0.2]
+            opacity: [0.2, 0.3, 0.2]
           }}
           transition={{
-            duration: 23,
+            duration: 80,
             repeat: Infinity,
             ease: "linear"
           }}
         >
-          <ExternalLink size={40} />
+          <ExternalLink size={35} />
         </motion.div>
         
         <motion.div
           className="absolute bottom-1/6 right-1/6 text-indigo-400/20 dark:text-indigo-600/20"
           animate={{
             rotate: [0, 360],
-            scale: [1, 0.8, 1],
-            opacity: [0.2, 0.5, 0.2]
+            opacity: [0.2, 0.3, 0.2]
           }}
           transition={{
-            duration: 29,
+            duration: 90,
             repeat: Infinity,
             ease: "linear"
           }}
         >
-          <X size={25} />
-        </motion.div>
-        
-        <motion.div
-          className="absolute top-2/3 left-1/6 text-emerald-400/20 dark:text-emerald-600/20"
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{
-            duration: 27,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          <Phone size={35} />
-        </motion.div>
-        
-        <motion.div
-          className="absolute bottom-1/3 left-1/6 text-violet-400/20 dark:text-violet-600/20"
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.5, 0.2]
-          }}
-          transition={{
-            duration: 31,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          <MapPin size={30} />
-        </motion.div>
-        
-        <motion.div
-          className="absolute top-1/4 right-1/2 text-rose-400/20 dark:text-rose-600/20"
-          animate={{
-            rotate: [360, 0],
-            scale: [1, 0.9, 1],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{
-            duration: 33,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          <Sun size={20} />
-        </motion.div>
-        
-        <motion.div
-          className="absolute bottom-1/4 left-1/2 text-amber-400/20 dark:text-amber-600/20"
-          animate={{
-            rotate: [0, 360],
-            scale: [1, 1.1, 1],
-            opacity: [0.2, 0.5, 0.2]
-          }}
-          transition={{
-            duration: 34,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          <Moon size={20} />
+          <X size={20} />
         </motion.div>
         
         {/* Floating Tech Orbs */}
