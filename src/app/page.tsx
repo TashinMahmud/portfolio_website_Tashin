@@ -410,7 +410,7 @@ export default function Home() {
                   }}
                 >
                   <img
-                    src="/profile-picture.jpg"
+                    src="/profile-picture.png"
                     alt="Tashin Mahmud Khan - Software Developer & AI Engineer"
                     className="w-full h-full object-cover"
                     onError={(e) => {
