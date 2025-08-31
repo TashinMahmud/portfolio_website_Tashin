@@ -32,13 +32,7 @@ interface Project {
   type: string;
 }
 
-interface ProjectScreenshots {
-  [key: string]: string[];
-}
 
-interface ProjectResearchPapers {
-  [key: string]: string[];
-}
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
@@ -793,7 +787,7 @@ export default function Home() {
             >
               Get In Touch
             </motion.h3>
-            <p className="text-gray-600 dark:text-gray-400">Let's connect and build something amazing together!</p>
+            <p className="text-gray-600 dark:text-gray-400">Let&apos;s connect and build something amazing together!</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center ml-16">
             <motion.div
