@@ -379,101 +379,33 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="flex flex-col lg:flex-row items-center justify-center gap-16"
           >
-            {/* Profile Picture */}
+            {/* Profile Picture - Simple */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="flex-shrink-0 flex justify-center"
             >
-              <div className="relative">
-                <motion.div 
-                  className="w-64 h-64 lg:w-80 lg:h-80 rounded-full border-4 border-blue-200 dark:border-blue-800 shadow-2xl"
-                  whileHover={{ 
-                    scale: 1.05,
-                    rotateY: 5,
-                    transition: { duration: 0.3 }
-                  }}
-                  animate={{
-                    boxShadow: [
-                      "0 25px 50px -12px rgba(59, 130, 246, 0.25)",
-                      "0 25px 50px -12px rgba(139, 92, 246, 0.25)",
-                      "0 25px 50px -12px rgba(59, 130, 246, 0.25)"
-                    ]
-                  }}
-                  transition={{
-                    boxShadow: {
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }
-                  }}
-                >
-                  <img
-                    src="/profile-picture.png"
-                    alt="Tashin Mahmud Khan - Software Developer & AI Engineer"
-                    className="w-full h-full object-contain"
-                    style={{ 
-                      backgroundColor: 'transparent',
-                      mixBlendMode: 'multiply'
-                    }}
-                    onError={(e) => {
-                      // Fallback to a placeholder if image doesn't load
-                      e.currentTarget.style.display = 'none';
-                      const placeholder = e.currentTarget.parentElement;
-                      if (placeholder) {
-                        placeholder.innerHTML = `
-                          <div class="w-full h-full flex items-center justify-center text-gray-500 dark:text-gray-400">
-                            <div class="text-center">
-                              <div class="text-6xl mb-2">👤</div>
-                              <div class="text-sm">Add your profile picture</div>
-                            </div>
-                          </div>
-                        `;
-                      }
-                    }}
-                  />
-                </motion.div>
-                {/* Enhanced decorative elements */}
-                <motion.div 
-                  className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    rotate: [0, 180, 360]
-                  }}
-                  transition={{ 
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <motion.div 
-                  className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-r from-pink-500 to-red-500 rounded-full"
-                  animate={{ 
-                    scale: [1, 1.3, 1],
-                    rotate: [0, -180, -360]
-                  }}
-                  transition={{ 
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1
-                  }}
-                />
-                <motion.div 
-                  className="absolute top-1/2 -right-4 w-3 h-3 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"
-                  animate={{ 
-                    y: [0, -10, 0],
-                    opacity: [0.5, 1, 0.5]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5
-                  }}
-                />
-              </div>
+              <img
+                src="/profile-picture.png"
+                alt="Tashin Mahmud Khan - Software Developer & AI Engineer"
+                className="w-64 h-64 lg:w-80 lg:h-80 rounded-full"
+                onError={(e) => {
+                  // Fallback to a placeholder if image doesn't load
+                  e.currentTarget.style.display = 'none';
+                  const placeholder = e.currentTarget.parentElement;
+                  if (placeholder) {
+                    placeholder.innerHTML = `
+                      <div class="w-64 h-64 lg:w-80 lg:h-80 rounded-full flex items-center justify-center text-gray-500 dark:text-gray-400 bg-gray-200 dark:bg-gray-700">
+                        <div class="text-center">
+                          <div class="text-6xl mb-2">👤</div>
+                          <div class="text-sm">Add your profile picture</div>
+                        </div>
+                      </div>
+                    `;
+                  }
+                }}
+              />
             </motion.div>
 
             {/* Text Content */}
