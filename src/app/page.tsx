@@ -22,9 +22,27 @@ import {
 } from 'lucide-react';
 import { projectScreenshots, projectResearchPapers } from '../data/screenshots';
 
+// Type definitions
+interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  github: string;
+  demo: string;
+  type: string;
+}
+
+interface ProjectScreenshots {
+  [key: string]: string[];
+}
+
+interface ProjectResearchPapers {
+  [key: string]: string[];
+}
+
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showModal, setShowModal] = useState(false);
 
   const toggleDarkMode = () => {
@@ -32,7 +50,7 @@ export default function Home() {
     document.documentElement.classList.toggle('dark');
   };
 
-  const openScreenshotModal = (project: any) => {
+  const openScreenshotModal = (project: Project) => {
     setSelectedProject(project);
     setShowModal(true);
   };
@@ -45,7 +63,7 @@ export default function Home() {
   const projects = [
     {
       title: "Bengali Text Summarizer",
-      description: "A machine learning project utilizing Google's mT5 model to summarize Bangla text efficiently. This project combines cutting-edge NLP techniques and pre-trained transformer models to generate concise, meaningful summaries of Bangla text. This is also my B.Sc. thesis project.",
+      description: "A machine learning project utilizing Google&apos;s mT5 model to summarize Bangla text efficiently. This project combines cutting-edge NLP techniques and pre-trained transformer models to generate concise, meaningful summaries of Bangla text. This is also my B.Sc. thesis project.",
       tech: ["Python", "mT5 Model", "NLP", "Machine Learning", "Bengali Language Processing", "Transformers"],
       github: "https://github.com/TashinMahmud/Bangla-Text-Summarizer-using-ML-and-NLP",
       demo: "#",
@@ -77,7 +95,7 @@ export default function Home() {
     },
     {
       title: "FlowZen - Advanced Android Workflow Automation",
-      description: "A comprehensive Android application that integrates multiple automation capabilities, workflow management, and smart features using on-device AI models. Features include AI assistant, workflow automation, email summarization, Telegram integration, CamFlow (AI image analysis), maps & geofencing, and Gmail integration.",
+      description: "A comprehensive Android application that integrates multiple automation capabilities, workflow management, and smart features using on-device AI models. Features include AI assistant, workflow automation, email summarization, Telegram integration, CamFlow (AI image analysis), maps &amp; geofencing, and Gmail integration.",
       tech: ["Kotlin", "Android Jetpack Compose", "TensorFlow Lite", "AI/ML", "Workflow Automation", "Telegram Bot API", "Google Maps API", "Gmail API"],
       github: "https://github.com/TashinMahmud/-FlowZen---Advanced-Android-Workflow-Automation-App",
       demo: "#",
@@ -1756,7 +1774,7 @@ export default function Home() {
                       North South University • 2020 - 2025
                     </p>
                     <p className="text-gray-600 dark:text-gray-300">
-                      <strong>Thesis:</strong> "Bengali Text Summarizer: An advanced summarizing of Bengali news articles"
+                      <strong>Thesis:</strong> &ldquo;Bengali Text Summarizer: An advanced summarizing of Bengali news articles&rdquo;
                     </p>
                   </div>
                 </div>
@@ -1871,7 +1889,7 @@ export default function Home() {
                 transition: { duration: 0.2 }
               }}
             >
-              I'm always open to discussing new opportunities and interesting projects.
+              I&apos;m always open to discussing new opportunities and interesting projects.
             </motion.p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <motion.a

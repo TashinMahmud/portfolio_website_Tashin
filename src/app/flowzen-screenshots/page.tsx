@@ -1,14 +1,17 @@
+import React from 'react';
+import Link from 'next/link';
+
 export default function FlowZenDemo() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       <div className="container mx-auto px-4 py-8">
         {/* Back Button */}
-        <a 
+        <Link 
           href="/" 
           className="fixed top-6 left-6 bg-gradient-to-r from-red-500 to-orange-500 text-white px-4 py-2 rounded-full hover:scale-105 transition-all z-50"
         >
           ← Back to Portfolio
-        </a>
+        </Link>
         
         {/* Header */}
         <div className="text-center mb-12 pt-16">
@@ -42,7 +45,7 @@ export default function FlowZenDemo() {
             </div>
             <h3 className="text-xl font-semibold text-red-400 mb-2">Sign In Screen</h3>
             <p className="text-gray-300 text-sm">
-              Clean authentication interface with email/password login and Google Sign-In options. Features the FlowZen branding with the tagline "Be ready anywhere, anytime!" and modern dark theme design.
+              Clean authentication interface with email/password login and Google Sign-In options. Features the FlowZen branding with the tagline &ldquo;Be ready anywhere, anytime!&rdquo; and modern dark theme design.
             </p>
           </div>
           

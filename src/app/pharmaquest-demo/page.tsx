@@ -1,14 +1,17 @@
+import React from 'react';
+import Link from 'next/link';
+
 export default function PharmaQuestDemo() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-400">
       <div className="container mx-auto px-4 py-8">
         {/* Back Button */}
-        <a 
+        <Link 
           href="/" 
           className="fixed top-6 left-6 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full hover:bg-white/30 transition-all z-50"
         >
           ← Back to Portfolio
-        </a>
+        </Link>
         
         {/* Header */}
         <div className="text-center mb-12 pt-16">
@@ -28,7 +31,7 @@ export default function PharmaQuestDemo() {
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">Welcome Screen</h3>
             <p className="text-white/80 text-sm">
-              Beautiful landing page with soft gradient background (light blue to light pink). Features the "PharmaQuest" title in gradient text, welcome message "Welcome to the world of medicine adventures!", name input field, and a gradient "Start" button with arrow icon.
+              Beautiful landing page with soft gradient background (light blue to light pink). Features the &ldquo;PharmaQuest&rdquo; title in gradient text, welcome message &ldquo;Welcome to the world of medicine adventures!&rdquo;, name input field, and a gradient &ldquo;Start&rdquo; button with arrow icon.
             </p>
           </div>
           
@@ -42,7 +45,7 @@ export default function PharmaQuestDemo() {
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">World Map Game</h3>
             <p className="text-white/80 text-sm">
-              Interactive world map interface showing game progress. Displays "Welcome, Tashin!" with current score (0), progress bar, and "Countries unlocked: 1/6". Countries like Sweden, England, Spain, Japan, Australia are marked, with Bangladesh highlighted in green as the unlocked country.
+              Interactive world map interface showing game progress. Displays &ldquo;Welcome, Tashin!&rdquo; with current score (0), progress bar, and &ldquo;Countries unlocked: 1/6&rdquo;. Countries like Sweden, England, Spain, Japan, Australia are marked, with Bangladesh highlighted in green as the unlocked country.
             </p>
           </div>
           
@@ -56,7 +59,7 @@ export default function PharmaQuestDemo() {
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">Quiz Question 1</h3>
             <p className="text-white/80 text-sm">
-              Quiz modal asking "What is the most common antibiotic used in Bangladesh?" with four options: Amoxicillin, Ciprofloxacin, Azithromycin, and Penicillin. Features gradient header with "Question 1/3", clean white design, and navigation buttons (Cancel/Next).
+              Quiz modal asking &ldquo;What is the most common antibiotic used in Bangladesh?&rdquo; with four options: Amoxicillin, Ciprofloxacin, Azithromycin, and Penicillin. Features gradient header with &ldquo;Question 1/3&rdquo;, clean white design, and navigation buttons (Cancel/Next).
             </p>
           </div>
           
@@ -70,7 +73,7 @@ export default function PharmaQuestDemo() {
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">Quiz Question 2</h3>
             <p className="text-white/80 text-sm">
-              Second quiz question: "Which disease is most prevalent in Bangladesh?" Options include Malaria, Dengue, Tuberculosis (correctly selected with green highlight and checkmark), and HIV. Shows the interactive quiz system with visual feedback for correct answers.
+              Second quiz question: &ldquo;Which disease is most prevalent in Bangladesh?&rdquo; Options include Malaria, Dengue, Tuberculosis (correctly selected with green highlight and checkmark), and HIV. Shows the interactive quiz system with visual feedback for correct answers.
             </p>
           </div>
           
@@ -84,7 +87,7 @@ export default function PharmaQuestDemo() {
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">Country Completion</h3>
             <p className="text-white/80 text-sm">
-              Congratulations modal with party hat icon and "You completed this country! Choose a Country to unlock next:" message. Features five country buttons (Japan, Australia, Sweden, Spain, England) in alternating green and blue colors, allowing players to select their next challenge.
+              Congratulations modal with party hat icon and &ldquo;You completed this country! Choose a Country to unlock next:&rdquo; message. Features five country buttons (Japan, Australia, Sweden, Spain, England) in alternating green and blue colors, allowing players to select their next challenge.
             </p>
           </div>
         </div>
