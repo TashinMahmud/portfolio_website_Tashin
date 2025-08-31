@@ -388,7 +388,7 @@ export default function Home() {
             >
               <div className="relative">
                 <motion.div 
-                  className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-blue-200 dark:border-blue-800 shadow-2xl bg-gray-100 dark:bg-gray-800"
+                  className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-blue-200 dark:border-blue-800 shadow-2xl"
                   whileHover={{ 
                     scale: 1.05,
                     rotateY: 5,
