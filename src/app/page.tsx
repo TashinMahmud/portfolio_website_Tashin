@@ -541,8 +541,8 @@ export default function Home() {
                   onClick={() => {
                     // Create a temporary link element to download the resume
                     const link = document.createElement('a');
-                    link.href = '/resume.pdf'; // Make sure to place your resume.pdf in the public folder
-                    link.download = 'Tashin_Mahmud_Khan_Resume.pdf';
+                    link.href = '/TASHIN MAHMUD KHAN - (+8801816209396) - RESUME.pdf'; // Make sure to place your resume.pdf in the public folder
+                    link.download = 'TASHIN MAHMUD KHAN - (+8801816209396) - RESUME.pdf';
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
@@ -612,7 +612,7 @@ export default function Home() {
               >
                 <Phone size={18} />
               </motion.div>
-              <span className="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">01816209396</span>
+              <span className="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">+8801816209396</span>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -633,7 +633,7 @@ export default function Home() {
               >
                 <Mail size={18} />
               </motion.div>
-              <span className="text-gray-700 dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">xtashin14@gmail.com</span>
+              <span className="text-gray-700 dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">tashinmahmud.official@gmail.com</span>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -1568,7 +1568,7 @@ export default function Home() {
                       B.Sc. in Computer Science and Engineering
                     </h4>
                     <p className="text-green-600 dark:text-green-400 font-medium mb-2">
-                      North South University • 2020 - 2025
+                      North South University • 2025
                     </p>
                     <p className="text-gray-600 dark:text-gray-300">
                       <strong>Thesis:</strong> &ldquo;Bengali Text Summarizer: An advanced summarizing of Bengali news articles&rdquo;
@@ -1690,7 +1690,7 @@ export default function Home() {
             </motion.p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <motion.a
-                href="mailto:xtashin14@gmail.com"
+                href="mailto:tashinmahmud.official@gmail.com"
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300"
                 whileHover={{ 
                   scale: 1.05,
@@ -1730,7 +1730,7 @@ export default function Home() {
             </div>
             <div className="flex justify-center space-x-6">
               <motion.a
-                href="mailto:xtashin14@gmail.com"
+                href="mailto:tashinmahmud.official@gmail.com"
                 className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 whileHover={{ 
                   scale: 1.3,
