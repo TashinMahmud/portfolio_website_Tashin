@@ -540,10 +540,10 @@ export default function Home() {
                   }}
                   onClick={() => {
                     try {
-                      // Method 1: Direct download
+                      // Method 1: Direct download using the updated filename
                       const link = document.createElement('a');
-                      link.href = '/TASHIN MAHMUD KHAN - (+8801816209396) - RESUME.pdf';
-                      link.download = 'TASHIN MAHMUD KHAN - (+8801816209396) - RESUME.pdf';
+                      link.href = '/TASHIN_MAHMUD_KHAN_(+8801816209396)_RESUME.pdf';
+                      link.download = 'TASHIN_MAHMUD_KHAN_(+8801816209396)_RESUME.pdf';
                       link.target = '_blank';
                       link.rel = 'noopener noreferrer';
                       
@@ -560,7 +560,7 @@ export default function Home() {
                     } catch (error) {
                       // Method 2: Fallback - open in new tab
                       console.log('Download failed, opening in new tab:', error);
-                      window.open('/TASHIN MAHMUD KHAN - (+8801816209396) - RESUME.pdf', '_blank');
+                      window.open('/TASHIN_MAHMUD_KHAN_(+8801816209396)_RESUME.pdf', '_blank');
                     }
                   }}
                   className="px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden group"
