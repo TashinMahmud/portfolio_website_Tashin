@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Sun, 
-  Moon, 
-  Github, 
-  Linkedin, 
-  Mail, 
+import {
+  Sun,
+  Moon,
+  Github,
+  Linkedin,
+  Mail,
   Download,
   ExternalLink,
   Code,
@@ -18,7 +18,8 @@ import {
   Phone,
   MapPin,
   X,
-  Zap
+  Zap,
+  Menu
 } from 'lucide-react';
 import { projectScreenshots, projectResearchPapers } from '../data/screenshots';
 
@@ -38,6 +39,7 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -135,7 +137,7 @@ export default function Home() {
         >
           <Code size={50} />
         </motion.div>
-        
+
         <motion.div
           className="absolute top-40 right-32 text-purple-400/20 dark:text-purple-600/20"
           animate={{
@@ -150,7 +152,7 @@ export default function Home() {
         >
           <Database size={40} />
         </motion.div>
-        
+
         <motion.div
           className="absolute bottom-32 left-1/4 text-cyan-400/20 dark:text-cyan-600/20"
           animate={{
@@ -165,7 +167,7 @@ export default function Home() {
         >
           <Globe size={50} />
         </motion.div>
-        
+
         <motion.div
           className="absolute top-1/2 right-1/4 text-indigo-400/20 dark:text-indigo-600/20"
           animate={{
@@ -180,7 +182,7 @@ export default function Home() {
         >
           <Brain size={35} />
         </motion.div>
-        
+
         {/* Additional Tech Icons */}
         <motion.div
           className="absolute top-1/6 left-1/6 text-yellow-400/20 dark:text-yellow-600/20"
@@ -197,7 +199,7 @@ export default function Home() {
         >
           <Download size={30} />
         </motion.div>
-        
+
         {/* Additional Tech Icons - Optimized */}
         <motion.div
           className="absolute top-1/3 right-1/6 text-red-400/20 dark:text-red-600/20"
@@ -213,7 +215,7 @@ export default function Home() {
         >
           <ExternalLink size={35} />
         </motion.div>
-        
+
         <motion.div
           className="absolute bottom-1/6 right-1/6 text-indigo-400/20 dark:text-indigo-600/20"
           animate={{
@@ -228,7 +230,7 @@ export default function Home() {
         >
           <X size={20} />
         </motion.div>
-        
+
         {/* Floating Tech Orbs */}
         <motion.div
           className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-blue-400/10 via-cyan-400/8 to-blue-600/10 rounded-full blur-3xl"
@@ -272,7 +274,7 @@ export default function Home() {
           }}
         />
       </div>
-      
+
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -283,18 +285,18 @@ export default function Home() {
               className="flex items-center gap-2 text-xl font-bold text-gray-900 dark:text-white"
             >
               <motion.div
-                animate={{ 
+                animate={{
                   rotate: [0, 15, -15, 0],
                   scale: [1, 1.2, 0.9, 1],
                   y: [0, -5, 5, 0],
                   x: [0, 3, -3, 0]
                 }}
-                transition={{ 
+                transition={{
                   duration: 4,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.3,
                   rotate: 360,
                   transition: { duration: 0.5 }
@@ -322,47 +324,69 @@ export default function Home() {
               </motion.div>
               <span>Tashin</span>
             </motion.div>
-            <div className="flex items-center space-x-4">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              {['About', 'Projects', 'Skills', 'Experience', 'Contact'].map((item) => (
+                <motion.a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-sm transition-colors"
+                  whileHover={{ y: -2, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {item}
+                </motion.a>
+              ))}
               <motion.button
                 onClick={toggleDarkMode}
-                whileHover={{ 
-                  scale: 1.1,
-                  rotate: [0, -10, 10, 0],
-                  transition: { duration: 0.3 }
-                }}
-                whileTap={{ 
-                  scale: 0.95,
-                  rotate: 180,
-                  transition: { duration: 0.2 }
-                }}
-                animate={{
-                  boxShadow: [
-                    "0 0 0 0 rgba(59, 130, 246, 0)",
-                    "0 0 0 8px rgba(59, 130, 246, 0.1)",
-                    "0 0 0 0 rgba(59, 130, 246, 0)"
-                  ]
-                }}
-                transition={{
-                  boxShadow: {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }
-                }}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative overflow-hidden"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               >
-                <motion.div
-                  key={darkMode ? 'sun' : 'moon'}
-                  initial={{ rotate: -180, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 180, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-                </motion.div>
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
               </motion.button>
             </div>
+
+            {/* Mobile Controls */}
+            <div className="flex items-center gap-2 md:hidden">
+              <motion.button
+                onClick={toggleDarkMode}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              >
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </motion.button>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              className="md:hidden border-t border-gray-200 dark:border-gray-700 py-4"
+            >
+              <div className="flex flex-col space-y-1">
+                {['About', 'Projects', 'Skills', 'Experience', 'Contact'].map((item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </div>
       </nav>
 
@@ -371,7 +395,7 @@ export default function Home() {
         {/* Hero Background Pattern */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-transparent to-indigo-50/20 dark:from-blue-900/10 dark:via-transparent dark:to-indigo-900/10"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.03)_0%,transparent_50%),radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.03)_0%,transparent_50%)]"></div>
-        
+
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -415,7 +439,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex-1 text-center"
             >
-              <motion.h1 
+              <motion.h1
                 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mb-6"
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
@@ -452,13 +476,13 @@ export default function Home() {
               >
                 Tashin Mahmud Khan
               </motion.h1>
-              <motion.p 
+              <motion.p
                 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-4xl mx-auto"
-                animate={{ 
+                animate={{
                   opacity: [0.7, 1, 0.7],
                   y: [0, -2, 0]
                 }}
-                transition={{ 
+                transition={{
                   duration: 3,
                   repeat: Infinity,
                   ease: "easeInOut"
@@ -466,20 +490,20 @@ export default function Home() {
               >
                 SOFTWARE DEVELOPER / AI ENGINEER
               </motion.p>
-              <motion.p 
+              <motion.p
                 className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                Computer Science graduate with a strong foundation in AI and machine learning. 
-                Passionate about applying data-driven solutions to real-world problems. Seeking an opportunity 
-                to grow as an AI/ML engineer. Also interested in web development and have worked on a number 
-                of WordPress websites.
+                Computer Science graduate and AI Agent & Automation Developer at SoftVence.
+                Passionate about building intelligent automation systems and applying data-driven
+                solutions to real-world problems. Experienced in AI/ML engineering and full-stack
+                web development.
               </motion.p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.button
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.1,
                     y: -5,
                     boxShadow: "0 20px 25px -5px rgba(59, 130, 246, 0.4)"
@@ -500,8 +524,8 @@ export default function Home() {
                     }
                   }}
                   onClick={() => {
-                    document.getElementById('projects')?.scrollIntoView({ 
-                      behavior: 'smooth' 
+                    document.getElementById('projects')?.scrollIntoView({
+                      behavior: 'smooth'
                     });
                   }}
                   className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden group"
@@ -518,7 +542,7 @@ export default function Home() {
                   </motion.div>
                 </motion.button>
                 <motion.button
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.1,
                     y: -5,
                     boxShadow: "0 20px 25px -5px rgba(107, 114, 128, 0.4)"
@@ -546,11 +570,11 @@ export default function Home() {
                       link.download = 'TASHIN_MAHMUD_KHAN_(+8801816209396)_RESUME.pdf';
                       link.target = '_blank';
                       link.rel = 'noopener noreferrer';
-                      
+
                       // Add to DOM, click, and remove
                       document.body.appendChild(link);
                       link.click();
-                      
+
                       // Clean up after a short delay
                       setTimeout(() => {
                         if (document.body.contains(link)) {
@@ -592,7 +616,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-8"
           >
-            <motion.h3 
+            <motion.h3
               className="text-2xl font-bold text-gray-900 dark:text-white mb-2"
               animate={{
                 scale: [1, 1.05, 1],
@@ -604,7 +628,7 @@ export default function Home() {
                 ease: "easeInOut"
               }}
             >
-              Get In Touch
+              Contact Information
             </motion.h3>
             <p className="text-gray-600 dark:text-gray-400">Let&apos;s connect and build something amazing together!</p>
           </motion.div>
@@ -614,7 +638,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 x: 10,
                 transition: { duration: 0.2 }
@@ -635,7 +659,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 x: -10,
                 transition: { duration: 0.2 }
@@ -656,7 +680,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 x: 10,
                 transition: { duration: 0.2 }
@@ -677,7 +701,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 x: -10,
                 transition: { duration: 0.2 }
@@ -691,9 +715,9 @@ export default function Home() {
               >
                 <Github size={18} />
               </motion.div>
-              <a 
-                href="https://github.com/TashinMahmud" 
-                target="_blank" 
+              <a
+                href="https://github.com/TashinMahmud"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
@@ -705,7 +729,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 y: -5,
                 transition: { duration: 0.2 }
@@ -719,9 +743,9 @@ export default function Home() {
               >
                 <Linkedin size={18} />
               </motion.div>
-              <a 
-                href="https://www.linkedin.com/in/tashin-mahmud-khan/" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/in/tashin-mahmud-khan/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
@@ -742,7 +766,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <motion.h2 
+            <motion.h2
               className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
               animate={{
                 scale: [1, 1.05, 1],
@@ -756,7 +780,7 @@ export default function Home() {
             >
               About Me
             </motion.h2>
-            <motion.div 
+            <motion.div
               className="w-24 h-1 bg-gray-900 dark:bg-white mx-auto"
               animate={{
                 scaleX: [1, 1.5, 1],
@@ -776,52 +800,52 @@ export default function Home() {
             viewport={{ once: true }}
             className="prose prose-lg dark:prose-invert max-w-none"
           >
-            <motion.p 
+            <motion.p
               className="text-gray-600 dark:text-gray-300 mb-6"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 x: 5,
                 scale: 1.02,
                 transition: { duration: 0.2 }
               }}
             >
-              I am a Computer Science and Engineering graduate from North South University, Bangladesh, 
-              with a strong foundation in artificial intelligence and machine learning. My academic journey 
+              I am a Computer Science and Engineering graduate from North South University, Bangladesh,
+              with a strong foundation in artificial intelligence and machine learning. My academic journey
               has been driven by a passion for applying data-driven solutions to real-world problems.
             </motion.p>
-            <motion.p 
+            <motion.p
               className="text-gray-600 dark:text-gray-300 mb-6"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 x: 5,
                 scale: 1.02,
                 transition: { duration: 0.2 }
               }}
             >
-              My interests span across AI, Machine Learning, and Full-Stack Web Development. I enjoy 
-              working on projects that combine these domains, from developing intelligent web applications 
+              My interests span across AI, Machine Learning, and Full-Stack Web Development. I enjoy
+              working on projects that combine these domains, from developing intelligent web applications
               to building machine learning models for practical use cases.
             </motion.p>
-            <motion.p 
+            <motion.p
               className="text-gray-600 dark:text-gray-300"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 x: 5,
                 scale: 1.02,
                 transition: { duration: 0.2 }
               }}
             >
-              Beyond technical skills, I value teamwork, problem-solving, and effective communication. 
-              I believe in continuous learning and staying updated with the latest technologies in the 
+              Beyond technical skills, I value teamwork, problem-solving, and effective communication.
+              I believe in continuous learning and staying updated with the latest technologies in the
               rapidly evolving field of computer science.
             </motion.p>
           </motion.div>
@@ -832,7 +856,7 @@ export default function Home() {
       <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Projects Background Pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(59,130,246,0.02)_0%,transparent_50%),radial-gradient(circle_at_80%_50%,rgba(99,102,241,0.02)_0%,transparent_50%)]"></div>
-        
+
         {/* Tech Icons Overlay */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -878,7 +902,7 @@ export default function Home() {
             <Github size={20} />
           </motion.div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -887,7 +911,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <motion.h2 
+            <motion.h2
               className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
               animate={{
                 scale: [1, 1.05, 1],
@@ -901,7 +925,7 @@ export default function Home() {
             >
               My Projects
             </motion.h2>
-            <motion.div 
+            <motion.div
               className="w-24 h-1 bg-gray-900 dark:bg-white mx-auto"
               animate={{
                 scaleX: [1, 1.5, 1],
@@ -922,7 +946,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   y: -10,
                   boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.25)",
@@ -931,9 +955,9 @@ export default function Home() {
                 className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-200 dark:border-gray-700 cursor-pointer group"
               >
                 <div className="mb-4">
-                  <motion.span 
+                  <motion.span
                     className="inline-block px-3 py-1 text-sm font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full"
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.1,
                       rotate: [0, -5, 5, 0],
                       transition: { duration: 0.3 }
@@ -946,9 +970,9 @@ export default function Home() {
                     {project.type}
                   </motion.span>
                 </div>
-                <motion.h3 
+                <motion.h3
                   className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.02,
                     x: 5,
                     transition: { duration: 0.2 }
@@ -967,7 +991,7 @@ export default function Home() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: techIndex * 0.1 }}
-                        whileHover={{ 
+                        whileHover={{
                           scale: 1.1,
                           y: -2,
                           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
@@ -983,7 +1007,7 @@ export default function Home() {
                   <motion.a
                     href={project.github}
                     className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.05,
                       x: 3,
                       transition: { duration: 0.2 }
@@ -1002,7 +1026,7 @@ export default function Home() {
                     <motion.button
                       onClick={() => openScreenshotModal(project)}
                       className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.05,
                         x: 3,
                         transition: { duration: 0.2 }
@@ -1021,7 +1045,7 @@ export default function Home() {
                     <motion.a
                       href={project.demo}
                       className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.05,
                         x: 3,
                         transition: { duration: 0.2 }
@@ -1127,7 +1151,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <motion.h2 
+            <motion.h2
               className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
               animate={{
                 scale: [1, 1.05, 1],
@@ -1141,7 +1165,7 @@ export default function Home() {
             >
               Skills & Technologies
             </motion.h2>
-            <motion.div 
+            <motion.div
               className="w-24 h-1 bg-gray-900 dark:bg-white mx-auto"
               animate={{
                 scaleX: [1, 1.5, 1],
@@ -1160,14 +1184,14 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 y: -10,
                 boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.25)"
               }}
               className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 cursor-pointer group"
             >
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-3 mb-4"
                 whileHover={{ x: 5 }}
               >
@@ -1187,7 +1211,7 @@ export default function Home() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.1,
                       y: -2,
                       boxShadow: "0 10px 15px -3px rgba(59, 130, 246, 0.3)"
@@ -1205,14 +1229,14 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 y: -10,
                 boxShadow: "0 25px 50px -12px rgba(34, 197, 94, 0.25)"
               }}
               className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600 transition-all duration-300 cursor-pointer group"
             >
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-3 mb-4"
                 whileHover={{ x: 5 }}
               >
@@ -1223,7 +1247,7 @@ export default function Home() {
                 >
                   <Globe size={20} />
                 </motion.div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Frameworks & Tools</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Frameworks & Libraries</h3>
               </motion.div>
               <div className="flex flex-wrap gap-2">
                 {skills.frameworks.map((skill, index) => (
@@ -1232,7 +1256,7 @@ export default function Home() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.1,
                       y: -2,
                       boxShadow: "0 10px 15px -3px rgba(34, 197, 94, 0.3)"
@@ -1250,14 +1274,14 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 y: -10,
                 boxShadow: "0 25px 50px -12px rgba(147, 51, 234, 0.25)"
               }}
               className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-300 cursor-pointer group"
             >
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-3 mb-4"
                 whileHover={{ x: 5 }}
               >
@@ -1277,7 +1301,7 @@ export default function Home() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.1,
                       y: -2,
                       boxShadow: "0 10px 15px -3px rgba(147, 51, 234, 0.3)"
@@ -1295,14 +1319,14 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 y: -10,
                 boxShadow: "0 25px 50px -12px rgba(99, 102, 241, 0.25)"
               }}
               className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600 transition-all duration-300 cursor-pointer group"
             >
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-3 mb-4"
                 whileHover={{ x: 5 }}
               >
@@ -1322,7 +1346,7 @@ export default function Home() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.1,
                       y: -2,
                       boxShadow: "0 10px 15px -3px rgba(99, 102, 241, 0.3)"
@@ -1340,14 +1364,14 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 y: -10,
                 boxShadow: "0 25px 50px -12px rgba(20, 184, 166, 0.25)"
               }}
               className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-teal-300 dark:hover:border-teal-600 transition-all duration-300 cursor-pointer group"
             >
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-3 mb-4"
                 whileHover={{ x: 5 }}
               >
@@ -1367,12 +1391,57 @@ export default function Home() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.1,
                       y: -2,
                       boxShadow: "0 10px 15px -3px rgba(20, 184, 166, 0.3)"
                     }}
                     className="px-3 py-2 bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 rounded-lg text-sm font-medium cursor-pointer transition-all duration-200"
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{
+                scale: 1.05,
+                y: -10,
+                boxShadow: "0 25px 50px -12px rgba(245, 158, 11, 0.25)"
+              }}
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-amber-300 dark:hover:border-amber-600 transition-all duration-300 cursor-pointer group"
+            >
+              <motion.div
+                className="flex items-center gap-3 mb-4"
+                whileHover={{ x: 5 }}
+              >
+                <motion.div
+                  whileHover={{ rotate: 360, scale: 1.2 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-2 bg-gradient-to-r from-amber-500 to-orange-500 rounded-lg text-white"
+                >
+                  <Zap size={20} />
+                </motion.div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Developer Tools</h3>
+              </motion.div>
+              <div className="flex flex-wrap gap-2">
+                {skills.tools.map((skill, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    whileHover={{
+                      scale: 1.1,
+                      y: -2,
+                      boxShadow: "0 10px 15px -3px rgba(245, 158, 11, 0.3)"
+                    }}
+                    className="px-3 py-2 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 rounded-lg text-sm font-medium cursor-pointer transition-all duration-200"
                   >
                     {skill}
                   </motion.span>
@@ -1458,7 +1527,7 @@ export default function Home() {
             <Mail size={25} />
           </motion.div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1467,7 +1536,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <motion.h2 
+            <motion.h2
               className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
               animate={{
                 scale: [1, 1.05, 1],
@@ -1481,7 +1550,7 @@ export default function Home() {
             >
               Experience & Education
             </motion.h2>
-            <motion.div 
+            <motion.div
               className="w-24 h-1 bg-gray-900 dark:bg-white mx-auto"
               animate={{
                 scaleX: [1, 1.5, 1],
@@ -1494,7 +1563,7 @@ export default function Home() {
               }}
             />
           </motion.div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Experience */}
             <motion.div
@@ -1502,25 +1571,25 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 y: -5,
                 boxShadow: "0 20px 40px -12px rgba(59, 130, 246, 0.25)"
               }}
               className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 cursor-pointer group"
             >
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-3 mb-6"
                 whileHover={{ x: 5 }}
               >
-                <motion.div 
+                <motion.div
                   className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center"
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 >
                   <Globe className="text-blue-600" size={24} />
                 </motion.div>
-                <motion.h3 
+                <motion.h3
                   className="text-2xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
                   whileHover={{ scale: 1.02 }}
                 >
@@ -1531,16 +1600,33 @@ export default function Home() {
                 <div className="flex items-start gap-4">
                   <div className="flex-1">
                     <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Web Developer
+                      AI Agent and Automation Developer
                     </h4>
                     <p className="text-blue-600 dark:text-blue-400 font-medium mb-2">
-                      AVARICE DIGITAL • 2023 - Present
+                      SoftVence • Feb 2026 - Present
                     </p>
                     <ul className="text-gray-600 dark:text-gray-300 space-y-2">
-                      <li>• Website designing and development</li>
-                      <li>• WordPress development and customization</li>
-                      <li>• Frontend and backend development</li>
+                      <li>• AI agent development and automation solutions</li>
+                      <li>• Building intelligent workflow automation systems</li>
+                      <li>• Integrating AI/ML models into production applications</li>
                     </ul>
+                  </div>
+                </div>
+                <div className="border-t border-gray-200 dark:border-gray-600 pt-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        Web Developer
+                      </h4>
+                      <p className="text-blue-600 dark:text-blue-400 font-medium mb-2">
+                        AVARICE DIGITAL • 2023 - 2025
+                      </p>
+                      <ul className="text-gray-600 dark:text-gray-300 space-y-2">
+                        <li>• Website designing and development</li>
+                        <li>• WordPress development and customization</li>
+                        <li>• Frontend and backend development</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1552,25 +1638,25 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 y: -5,
                 boxShadow: "0 20px 40px -12px rgba(34, 197, 94, 0.25)"
               }}
               className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:border-green-300 dark:hover:border-green-600 transition-all duration-300 cursor-pointer group"
             >
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-3 mb-6"
                 whileHover={{ x: 5 }}
               >
-                <motion.div 
+                <motion.div
                   className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center"
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 >
                   <Brain className="text-green-600" size={24} />
                 </motion.div>
-                <motion.h3 
+                <motion.h3
                   className="text-2xl font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors"
                   whileHover={{ scale: 1.02 }}
                 >
@@ -1601,7 +1687,7 @@ export default function Home() {
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Contact Background Pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(59,130,246,0.02)_0%,transparent_50%),radial-gradient(circle_at_50%_80%,rgba(99,102,241,0.02)_0%,transparent_50%)]"></div>
-        
+
         {/* Tech Icons Overlay */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -1647,7 +1733,7 @@ export default function Home() {
             <Linkedin size={20} />
           </motion.div>
         </div>
-        
+
         <div className="max-w-4xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1656,7 +1742,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <motion.h2 
+            <motion.h2
               className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
               animate={{
                 scale: [1, 1.05, 1],
@@ -1670,7 +1756,7 @@ export default function Home() {
             >
               Get In Touch
             </motion.h2>
-            <motion.div 
+            <motion.div
               className="w-24 h-1 bg-gray-900 dark:bg-white mx-auto"
               animate={{
                 scaleX: [1, 1.5, 1],
@@ -1690,13 +1776,13 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <motion.p 
+            <motion.p
               className="text-xl text-gray-600 dark:text-gray-300 mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 y: -2,
                 transition: { duration: 0.2 }
@@ -1708,7 +1794,7 @@ export default function Home() {
               <motion.a
                 href="mailto:tashinmahmud.official@gmail.com"
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   y: -3,
                   boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)"
@@ -1728,7 +1814,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   y: -3,
                   boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)"
@@ -1748,7 +1834,7 @@ export default function Home() {
               <motion.a
                 href="mailto:tashinmahmud.official@gmail.com"
                 className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.3,
                   y: -5,
                   rotate: 5
@@ -1762,7 +1848,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.3,
                   y: -5,
                   rotate: -5
@@ -1776,7 +1862,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.3,
                   y: -5,
                   rotate: 5
@@ -1792,7 +1878,7 @@ export default function Home() {
 
       {/* Screenshot Modal */}
       {showModal && selectedProject && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={closeScreenshotModal}
         >
@@ -1875,8 +1961,8 @@ export default function Home() {
                       className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:transform hover:-translate-y-1 transition-all"
                     >
                       <div className="rounded-lg h-48 mb-4 overflow-hidden bg-gray-200 dark:bg-gray-600">
-                        <img 
-                          src={screenshot.image} 
+                        <img
+                          src={screenshot.image}
                           alt={screenshot.title}
                           className="w-full h-full object-contain bg-gray-100 dark:bg-gray-600"
                           onError={(e) => {
@@ -1915,7 +2001,7 @@ export default function Home() {
       <footer className="py-8 px-4 sm:px-6 lg:px-8 bg-gray-900 dark:bg-black text-white">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-gray-400">
-            © 2024 Tashin Mahmud Khan. All rights reserved.
+            © {new Date().getFullYear()} Tashin Mahmud Khan. All rights reserved.
           </p>
         </div>
       </footer>
