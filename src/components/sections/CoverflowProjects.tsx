@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { featuredProjects } from "@/data/portfolio";
 import { HackerText } from "@/components/ui/HackerText";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { ImpactBadge } from "@/components/ui/ImpactBadge";
 
 export const CoverflowProjects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -129,7 +128,10 @@ export const CoverflowProjects = () => {
                   </p>
 
                   <div className="mt-auto flex flex-col md:flex-row gap-6 md:gap-4 md:items-center justify-between z-10">
-                    <ImpactBadge text={project.impactMetric} />
+                    <div className="inline-flex items-center gap-2 border border-blue-500/20 rounded-full px-4 py-2 bg-blue-500/5">
+                      <span className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.8)] animate-pulse"></span>
+                      <span className="text-xs font-mono text-white/70">{project.impactMetric}</span>
+                    </div>
                     
                     <div className="flex flex-wrap gap-2 lg:gap-3">
                       {project.tech.map((tech) => (
