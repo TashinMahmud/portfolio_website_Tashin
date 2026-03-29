@@ -41,7 +41,7 @@ export default function Home() {
             Ready to <span className="text-white/40">Deploy?</span>
           </h2>
           <p className="text-white/50 mb-10 max-w-lg mx-auto">
-            Whether it's an intelligent AI agent, an automated pipeline, or a full-stack infrastructure, I am ready to engineer the solution. Let's sync.
+            Whether it&apos;s an intelligent AI agent, an automated pipeline, or a full-stack infrastructure, I am ready to engineer the solution. Let&apos;s sync.
           </p>
           <MagneticButton href="mailto:tashinmahmud.official@gmail.com">
             <span className="font-mono uppercase tracking-widest text-xs">tashinmahmud.official@gmail.com</span>

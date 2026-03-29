@@ -17,7 +17,7 @@ export const MagneticButton = ({
   href,
   ...props 
 }: MagneticButtonProps) => {
-  const ref = useRef<HTMLButtonElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   
   const x = useMotionValue(0);
@@ -27,7 +27,7 @@ export const MagneticButton = ({
   const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
   const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!ref.current) return;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
     const centerX = left + width / 2;
@@ -52,8 +52,9 @@ export const MagneticButton = ({
 
   return (
     <Component
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
-      onMouseMove={handleMouseMove}
+      onMouseMove={handleMouseMove as React.MouseEventHandler<HTMLAnchorElement & HTMLButtonElement>}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ x: springX, y: springY }}
@@ -61,7 +62,8 @@ export const MagneticButton = ({
         "relative inline-flex items-center justify-center px-6 py-3 overflow-hidden text-sm font-medium tracking-tight bg-white text-background rounded-full transition-transform duration-300 active:scale-95 group",
         className
       )}
-      {...componentProps as any}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      {...(componentProps as any)}
     >
       <span className="relative z-10 flex items-center gap-2 group-hover:scale-105 transition-transform duration-300">
         {children}

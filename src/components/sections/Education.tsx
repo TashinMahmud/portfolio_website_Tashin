@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { GlassCard } from "@/components/ui/GlassCard";
 import { HackerText } from "@/components/ui/HackerText";
 import { AcademicAccordion } from "@/components/sections/AcademicAccordion";
 

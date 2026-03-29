@@ -17,7 +17,7 @@ export const HeroTerminal = () => {
       output: (
         <span className="text-white/70">
           FastAPI Connected [v1.0.0] <br />
-          Type <span className="text-accent">'help'</span> to see available commands.
+          Type <span className="text-accent">&apos;help&apos;</span> to see available commands.
         </span>
       ),
     },
@@ -96,7 +96,7 @@ export const HeroTerminal = () => {
       default:
         output = (
           <span className="text-red-400">
-            command not found: {cmd}. Type <span className="text-accent">'help'</span> for a list of commands.
+            command not found: {cmd}. Type <span className="text-accent">&apos;help&apos;</span> for a list of commands.
           </span>
         );
     }

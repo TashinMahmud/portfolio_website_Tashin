@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { ImpactBadge } from "@/components/ui/ImpactBadge";
 
 const academicData = [
   {
@@ -43,7 +41,7 @@ export const AcademicAccordion = () => {
   }, [isHovered]);
 
   return (
-    <div 
+    <div
       className="w-full flex flex-col lg:flex-row gap-4 h-[750px] lg:h-[450px] mt-8"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -56,11 +54,10 @@ export const AcademicAccordion = () => {
             layout
             key={index}
             onClick={() => setActive(index)}
-            className={`cursor-pointer overflow-hidden rounded-2xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              isActive 
-                ? "flex-[4] lg:flex-[6] bg-blue-500/5 border border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.1)]" 
+            className={`cursor-pointer overflow-hidden rounded-2xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isActive
+                ? "flex-[4] lg:flex-[6] bg-blue-500/5 border border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.1)]"
                 : "flex-1 bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-white/10 opacity-70 hover:opacity-100"
-            } relative flex group`}
+              } relative flex group`}
           >
             {/* Ambient Background Glow for Active Item */}
             {isActive && (
@@ -68,13 +65,12 @@ export const AcademicAccordion = () => {
             )}
 
             {/* Closed State Vertical/Horizontal Title Tab */}
-            <div 
-              className={`absolute inset-0 p-6 flex lg:flex-col justify-end lg:justify-center items-center lg:items-center transition-opacity duration-500 ${
-                isActive ? "opacity-0 pointer-events-none" : "opacity-100 delay-200"
-              }`}
+            <div
+              className={`absolute inset-0 p-6 flex lg:flex-col justify-end lg:justify-center items-center lg:items-center transition-opacity duration-500 ${isActive ? "opacity-0 pointer-events-none" : "opacity-100 delay-200"
+                }`}
             >
               {/* Using proper CSS writing-mode to stop text overflow cutoffs */}
-              <h3 
+              <h3
                 className="hidden lg:block text-xl font-bold tracking-tight text-white/50 group-hover:text-blue-300 transition-colors"
                 style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
               >
@@ -104,11 +100,11 @@ export const AcademicAccordion = () => {
                       <span className="font-mono text-xs">{"</>"}</span>
                     </div>
                   </div>
-                  
+
                   <h4 className="text-white font-bold text-2xl md:text-3xl lg:text-4xl mb-4 tracking-tight drop-shadow-md lg:w-3/4">
                     {project.title}
                   </h4>
-                  
+
                   <p className="text-white/60 leading-relaxed text-sm md:text-base lg:text-lg mb-8 max-w-xl group-hover:text-white/80 transition-colors">
                     {project.desc}
                   </p>

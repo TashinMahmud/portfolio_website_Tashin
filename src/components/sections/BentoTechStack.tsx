@@ -61,7 +61,7 @@ const MarqueeRow = ({ tools, reverse = false }: { tools: {name: string, category
                         )}
                       </div>
                       <span className="text-[10px] md:text-xs font-mono text-white/30 uppercase tracking-widest">
-                        // {tool.category}
+                        {/* {tool.category} */}
                       </span>
                     </div>
                   </GlassCard>
