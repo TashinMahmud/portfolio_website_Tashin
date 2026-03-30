@@ -83,6 +83,7 @@ export const featuredProjects: Project[] = [
 ];
 
 export const techStack = [
+  // Existing skills
   { name: "Python", category: "Language" },
   { name: "TypeScript", category: "Language" },
   { name: "Kotlin", category: "Language" },
@@ -94,4 +95,56 @@ export const techStack = [
   { name: "PyTorch", category: "AI/ML" },
   { name: "PostgreSQL", category: "Database" },
   { name: "Docker", category: "DevOps" },
+
+  // Programming Languages
+  { name: "JavaScript", category: "Language" },
+  { name: "Java", category: "Language" },
+  { name: "C++", category: "Language" },
+  { name: "C", category: "Language" },
+  { name: "HTML", category: "Language" },
+  { name: "CSS", category: "Language" },
+  { name: "PHP", category: "Language" },
+  { name: "SQL", category: "Language" },
+
+  // Frameworks & Libraries
+  { name: "React", category: "Frontend" },
+  { name: "Node.js", category: "Backend" },
+  { name: "Django", category: "Backend" },
+  { name: "Keras", category: "AI/ML" },
+  { name: "Scikit-learn", category: "AI/ML" },
+  { name: "WordPress", category: "Frontend" },
+
+  // Databases
+  { name: "MySQL", category: "Database" },
+  { name: "MongoDB", category: "Database" },
+  { name: "SQLite", category: "Database" },
+
+  // Machine Learning & AI
+  { name: "Machine Learning", category: "AI/ML" },
+  { name: "Deep Learning", category: "AI/ML" },
+  { name: "Computer Vision", category: "AI/ML" },
+  { name: "NLP", category: "AI/ML" },
+  { name: "Few-Shot Learning", category: "AI/ML" },
+  { name: "Transfer Learning", category: "AI/ML" },
+  { name: "Neural Networks", category: "AI/ML" },
+  { name: "Data Preprocessing", category: "AI/ML" },
+
+  // Cloud & Deployment
+  { name: "AWS", category: "DevOps" },
+  { name: "Google Cloud", category: "DevOps" },
+  { name: "Heroku", category: "DevOps" },
+  { name: "Vercel", category: "DevOps" },
+  { name: "REST APIs", category: "Backend" },
+  { name: "GraphQL", category: "Backend" },
+  { name: "Microservices", category: "Backend" },
+
+  // Developer Tools
+  { name: "Git", category: "DevOps" },
+  { name: "GitHub", category: "DevOps" },
+  { name: "Visual Studio Code", category: "Tools" },
+  { name: "Jupyter Notebook", category: "Tools" },
+  { name: "Google Colab", category: "Tools" },
+  { name: "PyCharm", category: "Tools" },
+  { name: "STM32", category: "Tools" },
+  { name: "AutoCAD", category: "Tools" },
 ];

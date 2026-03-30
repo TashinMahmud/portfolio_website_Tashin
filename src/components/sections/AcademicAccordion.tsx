@@ -42,7 +42,7 @@ export const AcademicAccordion = () => {
 
   return (
     <div
-      className="w-full flex flex-col lg:flex-row gap-4 h-[750px] lg:h-[450px] mt-8"
+      className="w-full flex flex-col lg:flex-row gap-4 h-[750px] lg:h-[450px] mt-8 shrink-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

@@ -22,7 +22,7 @@ const TypewriterLoop = ({ text }: { text: string }) => {
       timer = setTimeout(() => setIsDeleting(false), 500);
     } else {
       timer = setTimeout(() => {
-        setDisplayText(prev => 
+        setDisplayText(prev =>
           isDeleting ? prev.slice(0, -1) : text.slice(0, prev.length + 1)
         );
       }, isDeleting ? deletingSpeed : typingSpeed);
@@ -41,7 +41,7 @@ const TypewriterLoop = ({ text }: { text: string }) => {
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
+    <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left: Typography & Intro */}
         <motion.div
@@ -50,7 +50,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col relative z-20"
         >
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -62,27 +62,27 @@ export const HeroSection = () => {
 
           <h1 className="text-5xl md:text-7xl font-bold font-sans tracking-tighter text-white mb-6 leading-[1.1]">
             <div className="flex items-center gap-4 mb-6 md:mb-8 relative">
-               <div className="relative w-32 h-32 md:w-44 md:h-44">
-                 {/* Soft glow behind the cutout */}
-                 <div className="absolute inset-0 bg-white/5 rounded-full blur-2xl -z-10 animate-pulse" />
-                 
-                 <img 
-                   src="/profile-picture.png" 
-                   alt="Tashin Mahmud Khan" 
-                   className="w-full h-full object-cover select-none drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                   style={{ 
-                     WebkitMaskImage: 'radial-gradient(circle at center, black 50%, transparent 100%)',
-                     maskImage: 'radial-gradient(circle at center, black 50%, transparent 100%)'
-                   }}
-                 />
-               </div>
+              <div className="relative w-32 h-32 md:w-44 md:h-44">
+                {/* Soft glow behind the cutout */}
+                <div className="absolute inset-0 bg-white/5 rounded-full blur-2xl -z-10 animate-pulse" />
+
+                <img
+                  src="/profile-picture.png"
+                  alt="Tashin Mahmud Khan"
+                  className="w-full h-full object-cover select-none drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                  style={{
+                    WebkitMaskImage: 'radial-gradient(circle at center, black 50%, transparent 100%)',
+                    maskImage: 'radial-gradient(circle at center, black 50%, transparent 100%)'
+                  }}
+                />
+              </div>
             </div>
             <div className="flex flex-col">
               <HackerText text="Tashin Mahmud" />
               <HackerText text="Khan" />
             </div>
             <span className="block text-white/40 mt-3 text-3xl md:text-5xl font-mono tracking-tight glow-text font-light h-[80px] md:h-[120px]">
-              <TypewriterLoop text="AI Engineer & Automation Specialist." />
+              <TypewriterLoop text="AI Engineer & Automation Developer" />
             </span>
           </h1>
 

@@ -95,6 +95,9 @@ export const BentoTechStack = () => {
             <HackerText text="Current" /> <br className="hidden md:block"/>
             <span className="text-white/40"><HackerText text="Loadout" /></span>
           </h2>
+          <p className="text-white/60 text-lg max-w-2xl mb-8">
+            A comprehensive arsenal of programming languages, machine learning architectures, and full-stack development tools I leverage to build state-of-the-art applications.
+          </p>
           <div className="w-16 h-1 bg-white/20 mb-8" />
         </motion.div>
       </div>

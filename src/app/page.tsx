@@ -8,10 +8,12 @@ import { AmbientAurora } from "@/components/ui/AmbientAurora";
 import { ParticleNetwork } from "@/components/ui/ParticleNetwork";
 import { MouseSpotlight } from "@/components/ui/MouseSpotlight";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { Navbar } from "@/components/ui/Navbar";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground overflow-hidden selection:bg-white/20 selection:text-white relative">
+      <Navbar />
       <AmbientAurora />
       <ParticleNetwork />
       <MouseSpotlight />

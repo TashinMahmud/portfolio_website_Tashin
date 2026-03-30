@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { HackerText } from "@/components/ui/HackerText";
 import { AcademicAccordion } from "@/components/sections/AcademicAccordion";
+import { GlassCard } from "@/components/ui/GlassCard";
 
 const academicData = [
   {
@@ -30,32 +30,6 @@ const academicData = [
 ];
 
 export const Education = () => {
-  // Magnetic Tilt Logic for the Core Degree Card
-  const cardRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 200 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
-
-  const rotateX = useTransform(smoothY, [-0.5, 0.5], ["4deg", "-4deg"]);
-  const rotateY = useTransform(smoothX, [-0.5, 0.5], ["-4deg", "4deg"]);
-
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const { left, top, width, height } = cardRef.current.getBoundingClientRect();
-    const relativeX = (e.clientX - left) / width - 0.5;
-    const relativeY = (e.clientY - top) / height - 0.5;
-    mouseX.set(relativeX);
-    mouseY.set(relativeY);
-  };
-
-  const onMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
   return (
     <section id="education" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 perspective-[1500px]">
       <div className="flex flex-col md:flex-row gap-12 items-start">
@@ -77,67 +51,30 @@ export const Education = () => {
         {/* Right Side: Education Content */}
         <div className="md:w-2/3 flex flex-col gap-12 w-full">
           
-          {/* Holographic 3D Tilt Degree Card */}
+          {/* Standard Degree Card */}
           <motion.div
-             ref={cardRef}
-             onMouseMove={onMouseMove}
-             onMouseLeave={onMouseLeave}
-             style={{ rotateX, rotateY }}
-             initial={{ opacity: 0, scale: 0.95, y: 40 }}
-             whileInView={{ opacity: 1, scale: 1, y: 0 }}
-             viewport={{ once: true, margin: "-100px" }}
-             transition={{ duration: 0.8, ease: "easeOut" }}
-             className="relative w-full rounded-2xl group cursor-crosshair transform-gpu hover:scale-[1.02] transition-transform duration-500 ease-out"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="w-full shrink-0"
           >
-            {/* SVG Glowing Circuit Frame */}
-            <svg 
-              className="absolute inset-0 w-full h-full pointer-events-none z-20 rounded-2xl" 
-              viewBox="0 0 100 100" 
-              preserveAspectRatio="none"
-              style={{ overflow: 'visible' }}
-            >
-               <motion.rect
-                  x="0" y="0" width="100" height="100" rx="16"
-                  fill="none"
-                  stroke="rgba(59, 130, 246, 0.8)"
-                  strokeWidth="0.5"
-                  className="drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  whileInView={{ pathLength: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 2.5, ease: "circInOut", delay: 0.2 }}
-               />
-               <motion.rect
-                  x="0" y="0" width="100" height="100" rx="16"
-                  fill="none"
-                  stroke="rgba(255, 255, 255, 0.4)"
-                  strokeWidth="0.2"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.5, ease: "easeInOut", delay: 1 }}
-               />
-            </svg>
-
-            <div className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-8 relative overflow-hidden flex flex-col items-start gap-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-              {/* Internal Sweep Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-              
-              <div className="flex justify-between items-start w-full gap-4 relative z-10">
+            <GlassCard hoverEffect className="p-8 border-white/5 hover:border-white/10 group">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-2 group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-blue-400 transition-colors">
                     B.Sc. in Computer Science & Engineering
                   </h3>
-                  <p className="text-blue-300/80 font-mono mt-2 text-sm md:text-md uppercase tracking-widest">
+                  <p className="text-white/60 font-sans mt-2 text-sm md:text-base">
                     North South University (NSU)
                   </p>
                 </div>
                 
-                <span className="text-[10px] md:text-xs font-mono text-blue-400 bg-blue-500/10 px-3 py-1.5 rounded-full border border-blue-500/30 shrink-0 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                <span className="text-xs font-mono text-white/40 bg-white/5 px-3 py-1 rounded border border-white/10 shrink-0">
                   GRADUATED / 2025
                 </span>
               </div>
-            </div>
+            </GlassCard>
           </motion.div>
 
           {/* Academic Expanding Accordion Hover Section */}
