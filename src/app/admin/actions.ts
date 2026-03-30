@@ -10,6 +10,7 @@ export async function updateSiteConfig(data: {
   subtitle: string;
   bio: string;
   terminal_version: string;
+  resume_url?: string;
 }) {
   const supabase = await createClient();
   const { error } = await supabase

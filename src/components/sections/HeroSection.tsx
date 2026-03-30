@@ -44,11 +44,13 @@ type SiteConfig = {
   subtitle?: string;
   bio?: string;
   terminal_version?: string;
+  resume_url?: string;
 };
 
 export const HeroSection = ({ config }: { config?: SiteConfig }) => {
   const bio = config?.bio ?? "Software Developer and AI Engineer specializing in autonomous agents and intelligent automation. I bridge the gap between complex machine learning research and production-ready full-stack applications.";
   const subtitle = config?.subtitle ?? "AI Engineer & Automation Developer";
+  const resumeUrl = config?.resume_url ?? "";
   // Split name: everything before last word = line 1, last word = line 2
   const fullName = config?.name ?? "Tashin Mahmud Khan";
   const nameParts = fullName.trim().split(" ");
@@ -105,9 +107,21 @@ export const HeroSection = ({ config }: { config?: SiteConfig }) => {
           </p>
 
           <div className="flex gap-4">
-            <a href="#projects" className="px-6 py-3 bg-white text-background font-medium tracking-tight rounded-full hover:scale-105 transition-transform duration-300">
-              Execute Portfolio
-            </a>
+            {resumeUrl ? (
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                className="px-6 py-3 bg-white text-background font-medium tracking-tight rounded-full hover:scale-105 transition-transform duration-300"
+              >
+                Download Resume
+              </a>
+            ) : (
+              <a href="#projects" className="px-6 py-3 bg-white text-background font-medium tracking-tight rounded-full hover:scale-105 transition-transform duration-300">
+                Execute Portfolio
+              </a>
+            )}
             <a href="#contact" className="px-6 py-3 bg-white/5 border border-white/10 text-white font-medium tracking-tight rounded-full hover:bg-white/10 transition-colors duration-300">
               Initialize Contact
             </a>
