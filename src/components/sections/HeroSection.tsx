@@ -113,16 +113,16 @@ export const HeroSection = ({ config }: { config?: SiteConfig }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 download
-                className="px-6 py-3 bg-white text-background font-medium tracking-tight rounded-full hover:scale-105 transition-transform duration-300"
+                className="px-6 py-3 bg-white text-background text-xs font-mono font-bold tracking-widest uppercase rounded-full hover:scale-105 transition-transform duration-300"
               >
                 Download Resume
               </a>
             ) : (
-              <a href="#projects" className="px-6 py-3 bg-white text-background font-medium tracking-tight rounded-full hover:scale-105 transition-transform duration-300">
+              <a href="#projects" className="px-6 py-3 bg-white text-background text-xs font-mono font-bold tracking-widest uppercase rounded-full hover:scale-105 transition-transform duration-300">
                 Execute Portfolio
               </a>
             )}
-            <a href="#contact" className="px-6 py-3 bg-white/5 border border-white/10 text-white font-medium tracking-tight rounded-full hover:bg-white/10 transition-colors duration-300">
+            <a href="#contact" className="px-6 py-3 bg-white/5 border border-white/10 text-white text-xs font-mono font-bold tracking-widest uppercase rounded-full hover:bg-white/10 transition-colors duration-300">
               Initialize Contact
             </a>
           </div>

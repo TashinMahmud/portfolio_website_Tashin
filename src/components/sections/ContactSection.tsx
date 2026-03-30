@@ -4,7 +4,21 @@ import { Phone, Mail, MapPin, Github, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 import { HackerText } from "@/components/ui/HackerText";
 
-export const ContactSection = () => {
+type ContactConfig = {
+  phone?: string;
+  email?: string;
+  location?: string;
+  github?: string;
+  linkedin?: string;
+};
+
+export const ContactSection = ({ contact }: { contact?: ContactConfig }) => {
+  const phone    = contact?.phone    ?? "+8801816209396";
+  const email    = contact?.email    ?? "tashinmahmud.official@gmail.com";
+  const location = contact?.location ?? "Dhaka, Bangladesh";
+  const github   = contact?.github   ?? "https://github.com/TashinMahmud";
+  const linkedin = contact?.linkedin ?? "https://linkedin.com/in/tashin-mahmud-khan";
+
   return (
     <section id="contact" className="py-24 px-4 flex flex-col items-center justify-center text-center w-full z-10 relative">
       <motion.div
@@ -25,43 +39,34 @@ export const ContactSection = () => {
       </motion.div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-x-8 md:gap-y-6 w-full max-w-4xl mx-auto">
-        {/* Phone */}
         <ContactItem 
           icon={<Phone className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />}
-          text="+8801816209396"
-          href="tel:+8801816209396"
+          text={phone}
+          href={`tel:${phone}`}
           delay={0.1}
         />
-        
-        {/* Email */}
         <ContactItem 
           icon={<Mail className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />}
-          text="tashinmahmud.official@gmail.com"
-          href="mailto:tashinmahmud.official@gmail.com"
+          text={email}
+          href={`mailto:${email}`}
           delay={0.2}
         />
-        
-        {/* Location */}
         <ContactItem 
           icon={<MapPin className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />}
-          text="Dhaka, Bangladesh"
+          text={location}
           delay={0.3}
         />
-        
-        {/* GitHub */}
         <ContactItem 
           icon={<Github className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />}
-          text="github.com/TashinMahmud"
-          href="https://github.com/TashinMahmud"
+          text={github.replace("https://", "")}
+          href={github}
           delay={0.4}
         />
-        
-        {/* LinkedIn */}
         <div className="md:col-span-2 flex justify-center mt-2">
           <ContactItem 
             icon={<Linkedin className="w-5 h-5 md:w-6 md:h-6 text-blue-400" />}
-            text="linkedin.com/in/tashin-mahmud-khan"
-            href="https://linkedin.com/in/tashin-mahmud-khan"
+            text={linkedin.replace("https://", "")}
+            href={linkedin}
             delay={0.5}
             className="w-full md:w-auto md:pr-8" 
             containerClassName="w-full md:w-auto"
@@ -71,6 +76,7 @@ export const ContactSection = () => {
     </section>
   );
 };
+
 
 const ContactItem = ({ 
   icon, 

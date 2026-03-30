@@ -11,6 +11,11 @@ export async function updateSiteConfig(data: {
   bio: string;
   terminal_version: string;
   resume_url?: string;
+  contact_phone?: string;
+  contact_email?: string;
+  contact_location?: string;
+  contact_github?: string;
+  contact_linkedin?: string;
 }) {
   const supabase = await createClient();
   const { error } = await supabase

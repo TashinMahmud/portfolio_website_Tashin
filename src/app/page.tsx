@@ -73,7 +73,13 @@ export default async function Home() {
         <Experience />
         <Education />
         <BentoTechStack skills={skills} />
-        <ContactSection />
+        <ContactSection contact={{
+            phone:    config.contact_phone,
+            email:    config.contact_email,
+            location: config.contact_location,
+            github:   config.contact_github,
+            linkedin: config.contact_linkedin,
+          }} />
       </div>
 
       {/* Minimal footer */}
