@@ -3,10 +3,11 @@ import { CoverflowProjects } from "@/components/sections/CoverflowProjects";
 import { BentoTechStack } from "@/components/sections/BentoTechStack";
 import { Experience } from "@/components/sections/Experience";
 import { Education } from "@/components/sections/Education";
-import { MagneticButton } from "@/components/ui/MagneticButton";
+
 import { AmbientAurora } from "@/components/ui/AmbientAurora";
 import { ParticleNetwork } from "@/components/ui/ParticleNetwork";
 import { MouseSpotlight } from "@/components/ui/MouseSpotlight";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
@@ -35,18 +36,7 @@ export default function Home() {
         <Education />
         <BentoTechStack />
         
-        {/* Contact CTA */}
-        <section id="contact" className="py-24 px-4 flex flex-col items-center justify-center text-center max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-sans font-bold tracking-tighter text-white mb-6">
-            Ready to <span className="text-white/40">Deploy?</span>
-          </h2>
-          <p className="text-white/50 mb-10 max-w-lg mx-auto">
-            Whether it&apos;s an intelligent AI agent, an automated pipeline, or a full-stack infrastructure, I am ready to engineer the solution. Let&apos;s sync.
-          </p>
-          <MagneticButton href="mailto:tashinmahmud.official@gmail.com">
-            <span className="font-mono uppercase tracking-widest text-xs">tashinmahmud.official@gmail.com</span>
-          </MagneticButton>
-        </section>
+        <ContactSection />
       </div>
 
       {/* Minimal footer */}
