@@ -2,11 +2,12 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { featuredProjects } from "@/data/portfolio";
+import { featuredProjects as staticProjects, type Project } from "@/data/portfolio";
 import { HackerText } from "@/components/ui/HackerText";
 import { GlassCard } from "@/components/ui/GlassCard";
 
-export const CoverflowProjects = () => {
+export const CoverflowProjects = ({ projects: propProjects }: { projects?: Project[] }) => {
+  const featuredProjects = propProjects ?? staticProjects;
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const total = featuredProjects.length;

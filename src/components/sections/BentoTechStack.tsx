@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { techStack, featuredProjects } from "@/data/portfolio";
+import { techStack as staticSkills, featuredProjects } from "@/data/portfolio";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { HackerText } from "@/components/ui/HackerText";
@@ -75,8 +75,8 @@ const MarqueeRow = ({ tools, reverse = false }: { tools: {name: string, category
   );
 };
 
-export const BentoTechStack = () => {
-  const allTools = techStack;
+export const BentoTechStack = ({ skills: propSkills }: { skills?: { name: string; category: string }[] }) => {
+  const allTools = propSkills ?? staticSkills;
 
   // Split into two robust rows for opposing scroll directions
   const half = Math.ceil(allTools.length / 2);

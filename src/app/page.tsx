@@ -9,8 +9,44 @@ import { ParticleNetwork } from "@/components/ui/ParticleNetwork";
 import { MouseSpotlight } from "@/components/ui/MouseSpotlight";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Navbar } from "@/components/ui/Navbar";
+import { createClient } from "@/lib/supabase/server";
+import { featuredProjects as staticProjects, techStack as staticSkills } from "@/data/portfolio";
 
-export default function Home() {
+export const revalidate = 60; // ISR: revalidate every 60 seconds
+
+export default async function Home() {
+  const supabase = await createClient();
+
+  // Fetch from Supabase; fall back to static data if DB not seeded yet  
+  const [{ data: dbProjects }, { data: dbSkills }, { data: dbConfig }] = await Promise.all([
+    supabase.from("projects").select("*").order("id", { ascending: true }),
+    supabase.from("skills").select("*").eq("is_visible", true).order("category"),
+    supabase.from("site_config").select("*").eq("id", 1).single(),
+  ]);
+
+  const projects = dbProjects && dbProjects.length > 0
+    ? dbProjects.map((p) => ({
+        title: p.title,
+        description: p.description,
+        tech: p.tech,
+        github: p.github,
+        demo: p.demo,
+        type: p.type,
+        impactMetric: p.impact_metric,
+      }))
+    : staticProjects;
+
+  const skills = dbSkills && dbSkills.length > 0
+    ? dbSkills.map((s) => ({ name: s.name, category: s.category }))
+    : staticSkills;
+
+  const config = dbConfig ?? {
+    name: "Tashin Mahmud Khan",
+    subtitle: "AI Engineer & Automation Developer",
+    bio: "Software Developer and AI Engineer specializing in autonomous agents and intelligent automation. I bridge the gap between complex machine learning research and production-ready full-stack applications.",
+    terminal_version: "v1.0.0",
+  };
+
   return (
     <main className="min-h-screen bg-background text-foreground overflow-hidden selection:bg-white/20 selection:text-white relative">
       <Navbar />
@@ -32,11 +68,11 @@ export default function Home() {
 
       {/* Content wrapper */}
       <div className="relative z-10 flex flex-col gap-12 pb-24">
-        <HeroSection />
-        <CoverflowProjects />
+        <HeroSection config={config} />
+        <CoverflowProjects projects={projects} />
         <Experience />
         <Education />
-        <BentoTechStack />
+        <BentoTechStack skills={skills} />
         
         <ContactSection />
       </div>

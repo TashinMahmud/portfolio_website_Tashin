@@ -39,7 +39,21 @@ const TypewriterLoop = ({ text }: { text: string }) => {
   );
 };
 
-export const HeroSection = () => {
+type SiteConfig = {
+  name?: string;
+  subtitle?: string;
+  bio?: string;
+  terminal_version?: string;
+};
+
+export const HeroSection = ({ config }: { config?: SiteConfig }) => {
+  const bio = config?.bio ?? "Software Developer and AI Engineer specializing in autonomous agents and intelligent automation. I bridge the gap between complex machine learning research and production-ready full-stack applications.";
+  const subtitle = config?.subtitle ?? "AI Engineer & Automation Developer";
+  // Split name: everything before last word = line 1, last word = line 2
+  const fullName = config?.name ?? "Tashin Mahmud Khan";
+  const nameParts = fullName.trim().split(" ");
+  const nameLine2 = nameParts.length > 1 ? nameParts.pop()! : "";
+  const nameLine1 = nameParts.join(" ") || fullName;
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -78,16 +92,16 @@ export const HeroSection = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <HackerText text="Tashin Mahmud" />
-              <HackerText text="Khan" />
+              <HackerText text={nameLine1} />
+              {nameLine2 && <HackerText text={nameLine2} />}
             </div>
             <span className="block text-white/40 mt-3 text-3xl md:text-5xl font-mono tracking-tight glow-text font-light h-[80px] md:h-[120px]">
-              <TypewriterLoop text="AI Engineer & Automation Developer" />
+              <TypewriterLoop text={subtitle} />
             </span>
           </h1>
 
           <p className="text-lg text-white/50 max-w-xl leading-relaxed mb-8">
-            Software Developer and AI Engineer specializing in autonomous agents and intelligent automation. I bridge the gap between complex machine learning research and production-ready full-stack applications.
+            {bio}
           </p>
 
           <div className="flex gap-4">
