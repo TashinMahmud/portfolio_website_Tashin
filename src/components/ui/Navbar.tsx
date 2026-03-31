@@ -7,15 +7,16 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { name: "// OVERVIEW", href: "#hero" },
-  { name: "// PORTFOLIO", href: "#projects" },
-  { name: "// LOADOUT", href: "#stack" },
-  { name: "// EXPERIENCE", href: "#experience" },
-  { name: "// CONTACT", href: "#contact" },
+  { name: "// OVERVIEW",   href: "#hero",       sectionId: "hero" },
+  { name: "// PORTFOLIO",  href: "#projects",   sectionId: "projects" },
+  { name: "// LOADOUT",    href: "#stack",      sectionId: "stack" },
+  { name: "// EXPERIENCE", href: "#experience", sectionId: "experience" },
+  { name: "// CONTACT",    href: "#contact",    sectionId: "contact" },
 ];
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -23,8 +24,29 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const sectionIds = links.map((l) => l.sectionId);
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
   return (
-    <motion.header 
+    <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -43,18 +65,33 @@ export const Navbar = () => {
 
       {/* Navigation Links */}
       <nav className="hidden md:flex items-center gap-2 lg:gap-4">
-        {links.map((link) => (
-          <Link 
-            key={link.name} 
-            href={link.href}
-            className="text-[11px] lg:text-xs font-mono font-medium text-white/50 hover:text-white transition-all tracking-widest px-3 py-2 rounded hover:bg-white/5 hover:border-white/10 border border-transparent"
-          >
-            {link.name}
-          </Link>
-        ))}
+        {links.map((link) => {
+          const isActive = activeSection === link.sectionId;
+          return (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={cn(
+                "relative text-[11px] lg:text-xs font-mono font-medium transition-all tracking-widest px-3 py-2 rounded border",
+                isActive
+                  ? "text-blue-400 border-blue-500/30 bg-blue-500/10"
+                  : "text-white/50 hover:text-white border-transparent hover:bg-white/5 hover:border-white/10"
+              )}
+            >
+              {link.name}
+              {isActive && (
+                <motion.div
+                  layoutId="nav-active"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-blue-500 shadow-[0_0_6px_rgba(59,130,246,0.8)]"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
+            </Link>
+          );
+        })}
       </nav>
-      
-      {/* Mobile nav offset width spacer */}
+
+      {/* Mobile spacer */}
       <div className="w-8 md:hidden" />
     </motion.header>
   );

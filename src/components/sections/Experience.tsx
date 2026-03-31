@@ -5,7 +5,14 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { HackerText } from "@/components/ui/HackerText";
 
-const experienceData = [
+type ExperienceItem = {
+  role: string;
+  company: string;
+  period: string;
+  points: string[];
+};
+
+const staticExperience: ExperienceItem[] = [
   {
     role: "AI Agent and Automation Developer",
     company: "SoftVence",
@@ -14,7 +21,7 @@ const experienceData = [
       "AI agent development and automation solutions.",
       "Building intelligent workflow automation systems.",
       "Integrating AI/ML models into production applications.",
-    ]
+    ],
   },
   {
     role: "Web Developer",
@@ -24,12 +31,14 @@ const experienceData = [
       "Website designing and development.",
       "WordPress development and customization.",
       "Frontend and backend application logic.",
-    ]
-  }
+    ],
+  },
 ];
 
-export const Experience = () => {
+export const Experience = ({ experience }: { experience?: ExperienceItem[] }) => {
+  const experienceData = experience && experience.length > 0 ? experience : staticExperience;
   const containerRef = useRef<HTMLDivElement>(null);
+
 
   // Track scroll position of this entire section
   const { scrollYProgress } = useScroll({

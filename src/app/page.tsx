@@ -17,10 +17,11 @@ export const revalidate = 60;
 export default async function Home() {
   const supabase = await createClient();
 
-  const [{ data: dbProjects }, { data: dbSkills }, { data: dbConfig }] = await Promise.all([
+  const [{ data: dbProjects }, { data: dbSkills }, { data: dbConfig }, { data: dbExperience }] = await Promise.all([
     supabase.from("projects").select("*").order("id", { ascending: true }),
     supabase.from("skills").select("*").eq("is_visible", true).order("category"),
     supabase.from("site_config").select("*").eq("id", 1).single(),
+    supabase.from("experience").select("*").order("id", { ascending: true }),
   ]);
 
   const projects = dbProjects && dbProjects.length > 0
@@ -38,6 +39,15 @@ export default async function Home() {
   const skills = dbSkills && dbSkills.length > 0
     ? dbSkills.map((s) => ({ name: s.name, category: s.category }))
     : staticSkills;
+
+  const experience = dbExperience && dbExperience.length > 0
+    ? dbExperience.map((e) => ({
+        role: e.role,
+        company: e.company,
+        period: e.period,
+        points: e.points,
+      }))
+    : undefined;
 
   const config = dbConfig ?? {
     name: "Tashin Mahmud Khan",
@@ -70,7 +80,7 @@ export default async function Home() {
       <div className="relative z-10 flex flex-col gap-12 pb-24">
         <HeroSection config={config} />
         <CoverflowProjects projects={projects} />
-        <Experience />
+        <Experience experience={experience} />
         <Education />
         <BentoTechStack skills={skills} />
         <ContactSection contact={{
