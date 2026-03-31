@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { Terminal, FolderOpen, Cpu, Briefcase, LogOut, LayoutDashboard, Phone } from "lucide-react";
+import { Terminal, FolderOpen, Cpu, Briefcase, LogOut, LayoutDashboard, Phone, FileText } from "lucide-react";
 
 const navItems = [
   { href: "/admin/general",    label: "General Info",  icon: LayoutDashboard },
@@ -11,6 +11,7 @@ const navItems = [
   { href: "/admin/skills",     label: "Tech Stack",    icon: Cpu },
   { href: "/admin/experience", label: "Experience",    icon: Briefcase },
   { href: "/admin/contact",    label: "Contact",       icon: Phone },
+  { href: "/admin/cv",         label: "Generate CV",   icon: FileText },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
